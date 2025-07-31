@@ -1,2 +1,11 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+
+**/doc/** linguist-generated=true
+**/docs/** linguist-generated=true
+
+# (Optional) Mark individual file types as generated globally
+*.html linguist-generated=true
+*.css linguist-generated=true
+*.js linguist-generated=true
