@@ -49,13 +49,13 @@ export const projectsHeader: SxProps = {
 	marginBottom: '2rem',
 };
 
-export const projectsGrid = {
+export const projectsGrid: SxProps = {
 	gap: '2rem',
 	height: '100%',
 	gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
 };
 
-export const textStyle = {
+export const textStyle: SxProps = {
 	display: 'flex',
 	alignItems: 'center', // use "center" instead of "top" for visual balance
 	mb: 1, // space between heading and subheading
@@ -63,7 +63,18 @@ export const textStyle = {
 	wordBreak: 'break-word', // break long words if needed
 };
 
-export const iconStyles = {
+export const iconStyles: SxProps = {
 	color: 'primary.main',
 	mr: 1.5,
+};
+
+export const divCenter: SxProps = {
+	display: 'flex',
+	alignItems: 'center',
+	justifyContent: 'center',
+};
+
+export const containerStyles: SxProps = {
+	px: { xs: 2, sm: 3 },
+	py: { xs: 4, sm: 6 },
 };

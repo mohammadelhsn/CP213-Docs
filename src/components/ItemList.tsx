@@ -1,33 +1,45 @@
+/** ======= REACT & REACT ROUTER ======= */
 import { useEffect, useState } from 'react';
+
+/** ======= MUI COMPONENTS ======= */
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
+
+/** ======= MUI ICONS ======= */
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
+
+/** ======= CUSTOM COMPONENTS ======= */
 import ListItem from './ListItem';
-
-import {
-	type TaskData,
-	type ItemListOpts,
-	type AssessmentDataType,
-	type ExampleData,
-} from '../data/Data';
-
-import Settings from '../data/Settings';
 import Loading from './Loading';
 
+/** ======= TYPES & SETTINGS ======= */
+import type {
+	TaskData,
+	ItemListOpts,
+	AssessmentDataType,
+	ExampleData,
+} from '../data/Data';
+import Settings from '../data/Settings';
+
+/** Item List Component */
 const ItemList = (opts: ItemListOpts) => {
+	// TODO: Move this logic to a function
 	const baseUrl =
 		import.meta.env.MODE === 'production'
 			? `/${Settings.courseCode}/${opts.isFile ? '' : '#/'}`
 			: `/${opts.isFile ? '' : '#/'}`;
-
+	/** */
 	const [tasks, setTasks] = useState<TaskData[]>([]);
+	/** */
 	const [length, setLength] = useState<number>(0);
+	/** */
 	const [exampleData, setExampleData] = useState<ExampleData[]>([]);
+	/** */
 	const [loading, setLoading] = useState(true);
-
 	useEffect(() => {
 		(async () => {
+			//! Is this redundant?
 			setLoading(true);
 			if (opts.itemType === 'task' && opts.taskStr) {
 				const isLab = opts.taskStr.includes('elha7950_l');
@@ -36,7 +48,7 @@ const ItemList = (opts: ItemListOpts) => {
 					: await Settings.api.getAssignment(opts.taskStr.slice(-2));
 				if (res?.success && res.data && !Array.isArray(res.data)) {
 					const data = res.data as AssessmentDataType;
-					let taskList = [...data.tasks];
+					const taskList = [...data.tasks];
 					if (
 						data.functions &&
 						data.functions.length > 0 &&
@@ -74,11 +86,8 @@ const ItemList = (opts: ItemListOpts) => {
 			setLoading(false);
 		})();
 	}, [opts]);
-	if (loading) {
-		return (
-			<Loading />
-		);
-	}
+	if (loading) return (<Loading />);
+
 	if (opts.itemType === 'task' && tasks.length === 0) {
 		return (
 			<Container maxWidth="md" sx={{ mt: 8, textAlign: 'center', flexGrow: '1' }}>

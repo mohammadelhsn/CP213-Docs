@@ -1,9 +1,7 @@
-// React
-
+/** ======= REACT ======= */
 import { useEffect, useState } from 'react';
 
-// MUI Components
-
+/** ======= MUI COMPONENTS ======= */
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
@@ -12,21 +10,19 @@ import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 
-// Types
-
-import type { TopicOpts } from '@mohammadelhsn/portfolio-api-wrapper/dist/interfaces/Interfaces';
-import type { SvgIconComponent } from '@mui/icons-material';
-
-// Icons
-
-import Loading from './Loading';
+/** ======= MUI ICONS ======= */
 import PsychologyIcon from '@mui/icons-material/Psychology';
-import CodeIcon from '@mui/icons-material/Code';
 import AutoGraphIcon from '@mui/icons-material/AutoGraph';
+import CodeIcon from '@mui/icons-material/Code';
 
-// Settings for API access
+/** ======= CUSTOM COMPONENTS ======= */
+import Loading from './Loading';
 
+/** ======= TYPES & SETTINGS ======= */
+import type { SvgIconComponent } from '@mui/icons-material';
+import type { TopicOpts } from '@mohammadelhsn/portfolio-api-wrapper/dist/interfaces/Interfaces';
 import Settings from '../data/Settings';
+import { iconStyles } from '../data/Styles';
 
 // Topics
 
@@ -43,11 +39,7 @@ const Topics = () => {
 			setLoading(false);
 		})();
 	}, []);
-	if (loading) {
-		return (
-			<Loading />
-		);
-	}
+	if (loading) return (<Loading />);
 	return (
 		<Box>
 			{topics.map(({ title, eventKey, items }) => {
@@ -60,7 +52,7 @@ const Topics = () => {
 						<AccordionSummary>
 							<Typography variant="h6" sx={{ display: 'flex', alignItems: 'center' }}>
 								{Icon && (
-									<Icon fontSize="inherit" sx={{ color: 'primary.main', mr: 1.5 }} />
+									<Icon fontSize="inherit" sx={iconStyles} />
 								)}
 								<strong>{title}</strong>
 							</Typography>

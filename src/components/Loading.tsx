@@ -1,31 +1,37 @@
-// MUI Material
-
+/** ======= MUI COMPONENTS ======= */
 import Box from '@mui/material/Box';
-import CircularProgress from '@mui/material/CircularProgress';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
-// Loading Page
+/** ======= MUI ICONS ======= */
+import CircularProgress from '@mui/material/CircularProgress';
 
-export default function Loading() {
+/** ======= STYLES ======= */
+import { divCenter } from '../data/Styles';
+
+/** Loading Page */
+const Loading = () => {
     return (
+        // TODO: Make this maxWidth='xl'?
         <Container maxWidth="sm">
             <Box
-                display="flex"
-                flexDirection="column"
-                alignItems="center"
-                justifyContent="center"
-                height="70vh"
-                textAlign="center"
+                sx={{
+                    flexDirection: 'column',
+                    height: '70vh',
+                    textAlign: 'center',
+                    ...divCenter
+                }}
             >
                 <CircularProgress size={60} thickness={5} color="primary" />
-                <Typography variant="h6" mt={3}>
+                <Typography variant="h6" sx={{ mt: 3 }}>
                     Loading your content...
                 </Typography>
-                <Typography variant="body2" color="text.secondary" mt={1}>
+                <Typography variant="body2" sx={{ mt: 1, color: ({ palette }) => palette.text.secondary }}>
                     Please wait a moment.
                 </Typography>
             </Box>
         </Container>
     );
-}
+};
+
+export default Loading;

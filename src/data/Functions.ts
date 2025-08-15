@@ -1,10 +1,21 @@
 import type { LabsAssignmentOpt } from './Data';
 import Settings from './Settings';
 
+/**
+ *
+ * @param str
+ * @returns
+ */
 function Capitalize(str: string) {
 	return String(str).charAt(0).toUpperCase() + String(str).slice(1);
 }
 
+/**
+ *
+ * @param str
+ * @param capitalize
+ * @returns
+ */
 export function getItemType(str: string, capitalize?: boolean) {
 	if (capitalize != true) {
 		return str === 'assignment'
@@ -23,6 +34,11 @@ export function getItemType(str: string, capitalize?: boolean) {
 	}
 }
 
+/**
+ *
+ * @param str
+ * @returns
+ */
 export function enableFile(str: LabsAssignmentOpt) {
 	if (str == 'assignment') {
 		if (

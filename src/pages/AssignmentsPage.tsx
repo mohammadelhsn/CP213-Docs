@@ -1,30 +1,40 @@
+/** ======= REACT ======= */
+import { useNavigate } from 'react-router-dom';
+
+/** ======= MUI COMPONENTS ======= */
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
 
-import ItemList from '../components/ItemList';
-import type { LabsAssignmentsOpts } from '../data/Data';
-
+/** ======= MUI ICONS ======= */
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import ListIcon from '@mui/icons-material/List';
 import BiotechIcon from '@mui/icons-material/Biotech';
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
-import { textStyle } from '../data/Styles';
 import SectionWrapper from '../components/Section';
+
+/** ======= CUSTOM COMPONENTS ======= */
+import ItemList from '../components/ItemList';
+
+/** ======= TYPES, STYLES & FUNCTIONS ======= */
+import type { LabsAssignmentsOpts } from '../data/Data';
+import { containerStyles, iconStyles, textStyle } from '../data/Styles';
 import { enableFile } from '../data/Functions';
-import { useNavigate } from 'react-router-dom';
-import IconButton from '@mui/material/IconButton';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 // Create a page for the lab/assignment showing all the labs/assignments
 
 const LabsAssignmentsPage = (opts: LabsAssignmentsOpts) => {
+	/** Pick the icon to use based on what type of data is being loaded */
 	const Icon = opts.type == 'assignment' ? AssignmentIcon : opts.type == 'example' ? LightbulbIcon : BiotechIcon;
+	/** Determine whether a file is being used or not */
 	const isFile = enableFile(opts.type);
+	/** //! Does this need to be higher??? useState usually comes before everything */
 	const navigate = useNavigate();
 	return (
-		<Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 }, py: { xs: 4, sm: 6 } }}>
+		<Container maxWidth="lg" sx={containerStyles}>
 			<Box sx={{ mb: 2 }}>
 				<IconButton onClick={() => navigate(-1)} aria-label="Go back">
 					<ArrowBackIcon />
@@ -32,10 +42,7 @@ const LabsAssignmentsPage = (opts: LabsAssignmentsOpts) => {
 			</Box>
 			<Box>
 				<Typography variant="h2" sx={textStyle}>
-					<Icon fontSize='inherit' sx={{
-						color: 'primary.main',
-						mr: 1.5,
-					}} /> {opts.type === 'assignment' ? 'Assignments' : opts.type == 'lab' ? 'Labs' : 'Examples'}
+					<Icon fontSize='inherit' sx={iconStyles} /> {opts.type === 'assignment' ? 'Assignments' : opts.type == 'lab' ? 'Labs' : 'Examples'}
 				</Typography>
 				<Typography variant="h5" sx={{ fontStyle: 'italic' }}>
 					Here are the documented {opts.type}s.

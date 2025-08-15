@@ -1,20 +1,20 @@
-// MUI Components
-
+/** ======= MUI COMPONENTS ======= */
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
-import Button from '@mui/material/Button';
+
+/** ======= MUI ICONS ======= */
 import AssignmentIcon from '@mui/icons-material/Assignment';
-import TaskIcon from '@mui/icons-material/Task';
 import BiotechIcon from '@mui/icons-material/Biotech';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
+import TaskIcon from '@mui/icons-material/Task';
 
-// Data
-
+/** ======= TYPES & STYLES ======= */
 import { type AssignmentItemOpts } from '../data/Data';
-import { buttonStyles, cardActionStyles, cardBodyStyles } from '../data/Styles';
+import { buttonStyles, cardActionStyles, cardBodyStyles, iconStyles } from '../data/Styles';
 
 const ListItemComp = (opts: AssignmentItemOpts) => {
 	const Icon = opts.type == 'assignment' ? AssignmentIcon : opts.type == 'lab' ? BiotechIcon : opts.type == 'task' ? TaskIcon : MenuBookIcon;
@@ -38,9 +38,10 @@ const ListItemComp = (opts: AssignmentItemOpts) => {
 					{(
 						<Icon
 							fontSize="inherit"
-							sx={{ color: 'primary.main', mr: 1.5 }}
+							sx={iconStyles}
 						/>
 					)}
+					{/** // TODO: Move to a component */}
 					{`${opts.type}` == 'assignment'
 						? `Assignment ${opts.adds}`
 						: opts.type == 'example'
@@ -51,6 +52,7 @@ const ListItemComp = (opts: AssignmentItemOpts) => {
 					}
 				</Typography>
 				<Divider />
+				{/** // TODO: Move to a component */}
 				<Typography variant="body1" sx={cardBodyStyles}>
 					{`${opts.type}` == 'assignment'
 						? `View documentation for assignment ${opts.adds}`
@@ -62,7 +64,6 @@ const ListItemComp = (opts: AssignmentItemOpts) => {
 					}
 				</Typography>
 			</Box>
-
 			<Box sx={cardActionStyles}>
 				<Button
 					size="small"
@@ -72,6 +73,7 @@ const ListItemComp = (opts: AssignmentItemOpts) => {
 					}
 					sx={buttonStyles}
 				>
+					{/** // TODO: MOVE TO A COMPONENT */}
 					View{' '}
 					{opts.type === 'assignment'
 						? `Assignment ${opts.adds} `

@@ -1,27 +1,18 @@
-// React
-
+/** ======= REACT ======= */
 import { Link } from 'react-router-dom';
 
-// MUI Components
-
-import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
+/** ======= MUI COMPONENTS ======= */
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
+import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
 
-// Data
-
+/** ======= FUNCTIONS, TYPES & STYLES ======= */
 import { type CardTypes } from '../data/Data';
 import { getItemType } from '../data/Functions';
-
-// Settings
-
 import Settings from '../data/Settings';
-
-// Styles 
-
 import {
 	buttonStyles,
 	cardActionStyles,
@@ -30,13 +21,13 @@ import {
 	textStyle
 } from '../data/Styles';
 
-// Card Links component
+const small = Settings.exampleEnable ? 6 : 8;
+const md = Settings.exampleEnable ? 4 : 6;
 
+/** Card Links */
 const CardLinks = (opts: CardTypes) => {
 	const itemType = getItemType(opts.itemType);
 	const itemTypeCap = getItemType(opts.itemType, true);
-	const small = Settings.exampleEnable == false ? 8 : 6;
-	const md = Settings.exampleEnable == false ? 6 : 4;
 	return (
 		<Grid size={{ xs: 12, sm: small, md: md }}>
 			<Paper
@@ -68,7 +59,6 @@ const CardLinks = (opts: CardTypes) => {
 						{opts.desc}
 					</Typography>
 				</Box>
-
 				<Box sx={cardActionStyles}>
 					<Button
 						size="small"

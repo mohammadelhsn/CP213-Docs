@@ -1,29 +1,26 @@
-// MUI Components
-
+/** ======= MUI COMPONENT ======= */
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 
-// Data
-
-import Settings from '../data/Settings';
-
-// Icons 
-
+/** ======= MUI ICONS ======= */
 import LinkedIn from '@mui/icons-material/LinkedIn';
 import GitHub from '@mui/icons-material/GitHub';
 import Email from '@mui/icons-material/Email';
 
-// Footer component
+/** ======= SETTINGS ======= */
+import Settings from '../data/Settings';
 
+/** Footer for this project */
 const Footer = () => {
 	return (
 		<Box component="footer" textAlign="center" py={4} sx={{
 			boxShadow: '0 -4px 10px rgba(0, 0, 0, 0.1)',
-			bgcolor: (theme) => theme.palette.background.default,
-			color: (theme) => theme.palette.text.secondary
+			bgcolor: ({ palette }) => palette.background.default,
+			color: ({ palette }) => palette.text.secondary
 		}}>
 			<Box display="flex" justifyContent="center" gap={3}>
+				{/** // TODO: Make this into a component */}
 				<IconButton
 					component="a"
 					href={`mailto:${Settings.email}`}
@@ -33,6 +30,7 @@ const Footer = () => {
 				>
 					<Email />
 				</IconButton>
+				{/** // TODO: Make this into a component */}
 				<IconButton
 					href={Settings.github}
 					target="_blank"
@@ -43,6 +41,7 @@ const Footer = () => {
 					component='a'>
 					<GitHub />
 				</IconButton>
+				{/** // TODO: Make this into a component */}
 				<IconButton
 					component="a"
 					href={Settings.linkedIn}
@@ -55,7 +54,7 @@ const Footer = () => {
 					<LinkedIn />
 				</IconButton>
 			</Box>
-			<Typography variant="body2" mt={3} color="text.secondary">
+			<Typography variant="body2" sx={{ mt: 3, color: ({ palette }) => palette.text.secondary }}>
 				© 2025 {Settings.name}. All rights reserved.
 			</Typography>
 		</Box>

@@ -1,38 +1,26 @@
-// React
-
+/** ======= REACT ======= */
 import { useState, useEffect } from 'react';
 
-// Types 
-
-import type { TechItemOpts } from '@mohammadelhsn/portfolio-api-wrapper/dist/interfaces/Interfaces';
-
-// MUI Components
-
+/** ======= MUI COMPONENTS ======= */
 import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
 import Paper from '@mui/material/Paper';
 
-// Custom Components
-
-import TechItem from './TechItem';
+/** ======= CUSTOM COMPONENTS ======= */
 import Loading from './Loading';
+import TechItem from './TechItem';
 
-// Icons
-
+/** ======= MUI ICONS ======= */
 import TerminalIcon from '@mui/icons-material/Terminal';
 import CodeIcon from '@mui/icons-material/Code';
 import GitHubIcon from '@mui/icons-material/GitHub';
 
-// Types
-
+/** ======= TYPES & SETTINGS ======= */
+import type { TechItemOpts } from '@mohammadelhsn/portfolio-api-wrapper/dist/interfaces/Interfaces';
 import type { SvgIconComponent } from '@mui/icons-material';
-
-// Settings
-
 import Settings from '../data/Settings';
 
-// Tech List
-
+/** Tech List */
 const TechList = () => {
 	const [techList, setTechList] = useState<TechItemOpts[]>([]);
 	const [loading, setLoading] = useState(true);
