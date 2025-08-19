@@ -9,7 +9,7 @@ import type { Theme } from '@mui/material';
 import type { SettingOpts } from './Data';
 
 /** Settings Object for this project */
-class SettingsClass {
+export class SettingsClass {
 	/** Enable the example sub pages */
 	exampleEnable: boolean;
 	/** Enable assignment numbers (this renders an HTML in its place like Doxygen or JavaDoc) */

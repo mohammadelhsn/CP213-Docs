@@ -34,7 +34,7 @@ const LabsAssignmentsPage = (opts: LabsAssignmentsOpts) => {
 	/** //! Does this need to be higher??? useState usually comes before everything */
 	const navigate = useNavigate();
 	return (
-		<Container maxWidth="lg" sx={containerStyles}>
+		<Container maxWidth="xl" sx={containerStyles}>
 			<Box sx={{ mb: 2 }}>
 				<IconButton onClick={() => navigate(-1)} aria-label="Go back">
 					<ArrowBackIcon />

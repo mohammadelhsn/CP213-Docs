@@ -34,7 +34,7 @@ import { containerStyles, iconStyles, textStyle } from '../data/Styles';
 
 const CP213DocsMain = () => {
 	return (
-		<Container maxWidth="lg" sx={containerStyles}>
+		<Container maxWidth="xl" sx={containerStyles}>
 			<Box>
 				<Typography
 					variant="h2"

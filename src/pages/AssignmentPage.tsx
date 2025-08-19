@@ -37,10 +37,18 @@ const LabAssignmentPage = (opts: LabsAssignmentsOpts) => {
 			try {
 				if (opts.type === 'assignment') {
 					const res = await Settings.api.getAssignment(num?.slice(-2));
-					if (res?.data) setDataSource(res.data as AssessmentDataType);
+					if (res?.data) {
+						setDataSource(res.data as AssessmentDataType);
+					} else {
+						setDataSource(undefined);
+					};
 				} else {
 					const res = await Settings.api.getLab(num?.slice(-2));
-					if (res?.data) setDataSource(res.data as AssessmentDataType);
+					if (res?.data) {
+						setDataSource(res.data as AssessmentDataType);
+					} else {
+						setDataSource(undefined);
+					}
 				}
 			} catch (err) {
 				console.error('Failed to fetch data:', err);
@@ -56,7 +64,7 @@ const LabAssignmentPage = (opts: LabsAssignmentsOpts) => {
 	// TODO: Move to a component 
 	if (!dataSource) {
 		return (
-			<Container maxWidth="md" sx={{ mt: 8, textAlign: 'center', flexGrow: '1' }}>
+			<Container maxWidth="xl" sx={{ mt: 8, textAlign: 'center', flexGrow: '1' }}>
 				<SentimentVeryDissatisfiedIcon sx={{ fontSize: 60, color: 'error.main', mb: 2 }} />
 				<Typography variant="h4" gutterBottom sx={{ fontWeight: 600 }}>
 					Oops!
@@ -71,7 +79,7 @@ const LabAssignmentPage = (opts: LabsAssignmentsOpts) => {
 		);
 	}
 	return (
-		<Container maxWidth="lg" sx={containerStyles}>
+		<Container maxWidth="xl" sx={containerStyles}>
 			<Box sx={{ mb: 2 }}>
 				<IconButton onClick={() => navigate(-1)} aria-label="Go back">
 					<ArrowBackIcon />
